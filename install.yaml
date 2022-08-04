@@ -3,7 +3,7 @@
   hosts:  localhost
   become: no
   vars_files:
-    - ""
+    - "config/directories.yaml"
   pre_tasks:
     - name: update repositories
       become: yes
