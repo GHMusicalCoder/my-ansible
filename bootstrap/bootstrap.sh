@@ -20,7 +20,7 @@ function messenger() {
     local MSG="${2}"
 
     case ${MTYPE} in
-        info) echo -e " [${GREEN}+${RESET}] ${BLUE}${MSG}${RESET}";;
+        info) echo -e " [${GREEN}#${RESET}] ${BLUE}${MSG}${RESET}";;
         progress) echo -e " [${GREEN}+${RESET}] ${CYAN}${MSG}${RESET}";;
         recommend) echo -e " [${MAGENTA}!${RESET}] ${MAGENTA}${MSG}${RESET}";;
         warn) echo -e " [${YELLOW}*${RESET}] ${YELLOW}WARNING! ${MSG}${RESET}";;
@@ -31,7 +31,8 @@ function messenger() {
     esac
 }
 
-messenger progress "Setting up config variables"
+messenger info "Setting up config variables"
+HOME="/home/$USER"
 PLAYBOOK="install.yaml"
 SUDO="$(which sudo)"
 APT="$(which apt)"
@@ -39,5 +40,50 @@ RM="$(which rm)"
 WORK_DIR="/tmp"
 REPO="${WORK_DIR}/my-ansible"
 URL="https://github.com/GHMusicalCoder/my-ansible.git"
+VAULT=".ansible_vault_key"
+
+messenger progress "Installing installation dependencies via apt"
+${SUDO} ${APT} update -qq
+${SUDO} ${APT} upgrade -qq
+${SUDO} ${APT} install -qq ansible curl git openssh-server python3-pip
+
+messenger info "Setting up additional variables"
+GIT="$(which git)"
+AP="$(which ansible-playbook)"
+AG="$(which ansible-galaxy)"
+PIP="$(which pip)"
+
+messenger progress "Installing deb-get for additional 3rd party management"
+curl -sL https://raw.githubusercontent.com/wimpysworld/deb-get/main/deb-get | sudo -E bash -s install deb-get
+
+messenger progress "Moving ansible value key to its home location"
+if [ -f "${HOME}/${VAULT}" ]; then
+    messenger info "Vault key already in proper home location"
+else
+    if [ -f "${VAULT}" ]; then
+        cp ./${VAULT} "${HOME}/${VAULT}"
+        chmod 644 "${HOME}/${VAULT}"
+    else
+        messenger error "Ansible vault key not found and unable to be moved."
+        messenger error "Several installation items need the vault key."
+        messenger fatal "Exiting installation."
+    fi
+fi
+
+messenger progress "Creating temporary installation directory and downloading ansible git repo"
+cd ${WORK_DIR}
+${GIT} clone ${URL}
+cd ${REPO}
+
+messenger progress "Installing ansible dependencies"
+${AG} install -r requirements.yaml --ignore-errors --force
+${PIP} install github3.py
+
+messeinger progress "Running ansible playbook"
+${AP} --vault-password-file "${HOME}/${VAULT}" ./${PLAYBOOK} -c local -K
+
+exit 0
+
+
 
 
