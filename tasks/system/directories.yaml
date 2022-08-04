@@ -1,0 +1,14 @@
+---
+- name: Create standard home directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items: "{{ home_dirs }}"
+  when: home_dirs is defined
+
+- name: Create personal home directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items: "{{ personal_dirs }}"
+  when: (personal_dirs is defined) and ((ansible_nodename == "the-tardis") or (ansible_nodename == "the-doctor"))

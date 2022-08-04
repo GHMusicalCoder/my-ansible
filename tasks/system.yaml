@@ -1,1 +1,8 @@
 ---
+- name: Setting up system and personal directories
+  include: tasks/system/directories.yaml
+
+# github credentials
+
+# gitlab credentials
+
