@@ -1,0 +1,23 @@
+---
+- name: Ansible Installation of software
+  hosts:  localhost
+  become: no
+  vars_files:
+    - ""
+  pre_tasks:
+    - name: update repositories
+      become: yes
+      apt: update_cache=yes
+      changed_when: false
+  tasks:
+    - include: tasks/system.yaml
+    - include: tasks/apps.yaml
+  post_tasks:
+    - name: autoremove and purge apt packages - fix broken installs
+      become: yes
+      apt:
+        name: "*"
+        state: fixed
+        autoclean: yes
+        autoremove: yes
+        purge: yes
