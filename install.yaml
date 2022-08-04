@@ -14,6 +14,7 @@
     - include: tasks/apps.yaml
   post_tasks:
     - name: fix any broken installs
+      become: yes
       apt:
         name: "*"
         state: fixed
