@@ -1,0 +1,29 @@
+# comment out any directories that may not be needed
+
+# standard system directories
+home_dirs:
+  - "/home/{{ lookup('env','USER') }}/Development"
+  - "/home/{{ lookup('env','USER') }}/.config/gitcreds"
+  - "/home/{{ lookup('env','USER') }}/.icons"
+  - "/home/{{ lookup('env','USER') }}/.icons/Sweet-Purple"
+  - "/home/{{ lookup('env','USER') }}/.themes"
+  - "/home/{{ lookup('env','USER') }}/Temp"
+  - "/home/{{ lookup('env','USER') }}/Applications"
+  - "/home/{{ lookup('env','USER') }}/Applications/AppImages"
+  - "/home/{{ lookup('env','USER') }}/Applications/GitApps"
+  - "/home/{{ lookup('env','USER') }}/Applications/SingularApps"
+  - "/home/{{ lookup('env','USER') }}/Data"
+  - "/home/{{ lookup('env','USER') }}/Work"
+  - "/home/{{ lookup('env','USER') }}/Work/ObsidianNotes"
+
+personal_dirs:
+  - "/home/{{ lookup('env','USER') }}/Applications/SingularApps/yt-dlp"
+  - "/home/{{ lookup('env','USER') }}/NASShares"
+  - "/home/{{ lookup('env','USER') }}/Documents/Books"
+  - "/home/{{ lookup('env','USER') }}/Documents/Gaming"
+  - "/home/{{ lookup('env','USER') }}/Documents/Magazines"
+  - "/home/{{ lookup('env','USER') }}/Documents/Recipes"
+  - "/home/{{ lookup('env','USER') }}/Pictures/Desktop Backgrounds"
+  - "/home/{{ lookup('env','USER') }}/Pictures/Masonic"
+
+
