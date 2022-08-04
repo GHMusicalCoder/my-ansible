@@ -55,6 +55,7 @@ PIP="$(which pip)"
 
 messenger progress "Installing deb-get for additional 3rd party management"
 curl -sL https://raw.githubusercontent.com/wimpysworld/deb-get/main/deb-get | sudo -E bash -s install deb-get
+${SUDO} mkdir -p /etc/deb-get.d/{01-pending-merge,02-personal}
 
 messenger progress "Moving ansible value key to its home location"
 if [ -f "${HOME}/${VAULT}" ]; then
@@ -74,6 +75,7 @@ messenger progress "Creating temporary installation directory and downloading an
 cd ${WORK_DIR}
 ${GIT} clone ${URL}
 cd ${REPO}
+${SUDO} cp ./files/deb-get_submitted /etc/deb-get.d/01-pending-merge/10-submitted
 
 messenger progress "Installing ansible dependencies"
 ${AG} install -r requirements.yaml --ignore-errors --force
