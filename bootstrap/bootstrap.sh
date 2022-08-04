@@ -81,7 +81,7 @@ messenger progress "Installing ansible dependencies"
 ${AG} install -r requirements.yaml --ignore-errors --force
 ${PIP} install github3.py
 
-messeinger progress "Running ansible playbook"
+messenger progress "Running ansible playbook"
 ${AP} --vault-password-file "${HOME}/${VAULT}" ./${PLAYBOOK} -c local -K
 
 exit 0
