@@ -13,11 +13,13 @@
     - include: tasks/system.yaml
     - include: tasks/apps.yaml
   post_tasks:
-    - name: autoremove and purge apt packages - fix broken installs
-      become: yes
+    - name: fix any broken installs
       apt:
         name: "*"
         state: fixed
         autoclean: yes
+    - name: autoremove and purge apt packages - fix broken installs
+      become: yes
+      apt:
         autoremove: yes
         purge: yes
