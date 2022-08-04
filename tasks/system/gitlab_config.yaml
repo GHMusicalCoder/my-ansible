@@ -1,0 +1,22 @@
+- name: Copy gitlab cred file
+  copy:
+    src: files/gitlab.creds
+    dest: "/home/{{ lookup('env','USER') }}/.config/gitcreds/gitlab.creds"
+    decrypt: yes
+    owner: "{{ lookup('env','USER') }}"
+    group: "{{ lookup('env','USER') }}"
+    mode: 0644
+
+- name: Copy gitlab config file
+  copy:
+    src: files/gitlab.config
+    dest: "/home/{{ lookup('env','USER') }}/.config/gitcreds/gitlab.config"
+    owner: "{{ lookup('env','USER') }}"
+    group: "{{ lookup('env','USER') }}"
+    mode: 0644
+
+- name: Create git config link for gitlab
+  file:
+    src: /home/{{ lookup('env','USER') }}/.config/gitcreds/gitlab.config
+    path: /home/{{ lookup('env','USER') }}/.gitconfig
+    state: link

@@ -1,0 +1,22 @@
+- name: Copy github cred file
+  copy:
+    src: files/github.creds
+    dest: "/home/{{ lookup('env','USER') }}/.config/gitcreds/github.creds"
+    decrypt: yes
+    owner: "{{ lookup('env','USER') }}"
+    group: "{{ lookup('env','USER') }}"
+    mode: 0644
+
+- name: Copy github config file
+  copy:
+    src: files/github.config
+    dest: "/home/{{ lookup('env','USER') }}/.config/gitcreds/github.config"
+    owner: "{{ lookup('env','USER') }}"
+    group: "{{ lookup('env','USER') }}"
+    mode: 0644
+
+- name: Create git credentials config link for github
+  file:
+    src: /home/{{ lookup('env','USER') }}/.config/gitcreds/github.creds
+    path: /home/{{ lookup('env','USER') }}/.git-credentials
+    state: link

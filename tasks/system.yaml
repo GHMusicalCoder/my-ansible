@@ -3,6 +3,10 @@
   include: tasks/system/directories.yaml
 
 # github credentials
+- name: Setting up github credentials
+  include: tasks/system/github_config.yaml
 
 # gitlab credentials
+- name: Setting up github credentials
+  include: tasks/system/gitlab_config.yaml
 
