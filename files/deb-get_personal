@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+function deb_bw-cli() {
+    get_github_releases "https://api.github.com/repos/bitwarden/cli/releases/latest"
+    if [ "${ACTION}" != "prettylist" ]; then
+        URL=$(grep "browser_download_url.*.zip" "${CACHE_DIR}/${APP}.json" | cut -d'"' -f4)
+        VERSION_PUBLISHED="$(echo "${URL}" | cut -d'/' -f8 | tr -d v)"
+    fi
+    METHOD="zip"
+    PRETTY_NAME="Bitwarden CLI App"
+    WEBSITE="https://bitwarden.com/"
+    SUMMARY="Open Source Password Manager for command line."
+}

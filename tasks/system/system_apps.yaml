@@ -1,0 +1,7 @@
+- name: Installing wanted system apps
+  become: yes
+  apt:
+    pkg:  "{{ system_apps }}"
+    state: present
+  when: system_apps is defined
+

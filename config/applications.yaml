@@ -1,0 +1,40 @@
+---
+# comment out any packages you don't need to run
+
+# system - level applications
+system_apps:
+  - build-essential 
+  - curl
+  - dcfldd 
+  - dconf-editor 
+  - gddrescue 
+  - gparted
+  - jq
+  - libbz2-dev 
+  - libcairo2-dev 
+  - libffi-dev
+  - libgirepository1.0-dev
+  - liblzma-dev
+  - libncurses5-dev
+  - libncursesw5-dev
+  - libreadline-dev
+  - libssl-dev
+  - libxmlsec1-dev
+  - libxml2-dev
+  - llvm
+  - lsscsi
+  - make
+  - mlocate
+  - net-tools
+  - nfs-common
+  - nmap
+  - p7zip-rar
+  - pavucontrol
+  - rar
+  - software-properties-common
+  - tk-dev
+  - ttf-mscorefonts-installer
+  - unrar
+  - vim
+  - wget
+  - xz-utils

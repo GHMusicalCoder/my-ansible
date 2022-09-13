@@ -4,6 +4,7 @@
   become: no
   vars_files:
     - "config/directories.yaml"
+    - "config/applications.yaml"
   pre_tasks:
     - name: update repositories
       become: yes
