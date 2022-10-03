@@ -25,6 +25,7 @@ My ansible pull installation for my several computers and servers
 2. Install various category applications (apt or deb-get or cmk-get)
    * Accessories
    * Development
+     * When installing VS Code Extensions - use redhat.ansible instead of the other ansible
    * Games
    * Graphics
    * Internet
