@@ -26,6 +26,7 @@ My ansible pull installation for my several computers and servers
    * Accessories
    * Development
      * When installing VS Code Extensions - use redhat.ansible instead of the other ansible
+     * Install git configuration manager
    * Games
    * Graphics
    * Internet
