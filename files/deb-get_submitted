@@ -55,3 +55,14 @@ function deb_sparrow-wallet() {
     SUMMARY="Bitcoin Wallet"
  
 }
+
+function deb_git-cred-mgr() {
+    get_github_releases "https://api.github.com/repos/GitCredentialManager/git-credential-manager/releases/latest"
+    if [ "${ACTION}" != "prettylist" ]; then
+        URL=$(grep "browser_download_url.*_amd64*.deb" "${CACHE_DIR}/${APP}.json" | cut -d'"' -f4)
+        VERSION_PUBLISHED="$(echo "${URL}" | cut -d'/' -f8 | tr -d v)"
+    fi
+    PRETTY_NAME="GIT Credential Manager"
+    WEBSITE="https://github.com/GitCredentialManager/git-credential-manager"
+    SUMMARY="Git Credential System for GitHub"
+}
