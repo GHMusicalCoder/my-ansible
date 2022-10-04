@@ -1,4 +1,4 @@
-- name: Installing wanted system apps
+- name: Installing necessary system apps
   become: yes
   apt:
     pkg:  "{{ system_apps }}"

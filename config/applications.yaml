@@ -25,6 +25,7 @@ system_apps:
   - lsscsi
   - make
   - mlocate
+  - neofetch
   - net-tools
   - nfs-common
   - nmap
