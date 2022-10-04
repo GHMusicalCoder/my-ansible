@@ -4,7 +4,6 @@ My ansible pull installation for my several computers and servers
 ## order of operations
 1. System setup + system applications
 
-    * Get deb-get and cmk-get git repos
     * Ensure personal directories are configured properly based on machine
     * Configure gitlab and github configuration swapping mechanisms
     * Set up base system items from our included files:
