@@ -2,7 +2,6 @@
 
 # standard system directories
 home_dirs:
-  - "/home/{{ lookup('env','USER') }}/Development"
   - "/home/{{ lookup('env','USER') }}/.config/gitcreds"
   - "/home/{{ lookup('env','USER') }}/.icons"
   - "/home/{{ lookup('env','USER') }}/.icons/Sweet-Purple"

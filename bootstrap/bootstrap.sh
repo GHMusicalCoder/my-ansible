@@ -37,7 +37,7 @@ PLAYBOOK="install.yaml"
 SUDO="$(which sudo)"
 APT="$(which apt)"
 RM="$(which rm)"
-WORK_DIR="/tmp"
+WORK_DIR="${HOME}/Development"
 REPO="${WORK_DIR}/my-ansible"
 URL="https://github.com/GHMusicalCoder/my-ansible.git"
 VAULT=".ansible_vault_key"
@@ -55,7 +55,7 @@ PIP="$(which pip)"
 
 messenger progress "Installing deb-get for additional 3rd party management"
 curl -sL https://raw.githubusercontent.com/wimpysworld/deb-get/main/deb-get | sudo -E bash -s install deb-get
-${SUDO} mkdir -p /etc/deb-get.d/{01-pending-merge,02-personal}
+${SUDO} mkdir -p /etc/deb-get.d/01-pending-merge
 
 messenger progress "Moving ansible value key to its home location"
 if [ -f "${HOME}/${VAULT}" ]; then
@@ -72,6 +72,7 @@ else
 fi
 
 messenger progress "Creating temporary installation directory and downloading ansible git repo"
+mkdir -p ${WORK_DIR}
 cd ${WORK_DIR}
 ${GIT} clone ${URL}
 cd ${REPO}
