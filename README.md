@@ -4,7 +4,7 @@ My ansible pull installation for my several computers and servers
 ## order of operations
 1. System setup + system applications
 
-    * Ensure personal directories are configured properly based on machine
+    * ~~Ensure personal directories are configured properly based on machine~~
     * Configure gitlab and github configuration swapping mechanisms
     * Set up base system items from our included files:
       * before implementing these - I want to clean these up so they are more spaced out as I have some aliases and such that I wouldn't want at the office machine, etc

@@ -14,9 +14,3 @@
     owner: "{{ lookup('env','USER') }}"
     group: "{{ lookup('env','USER') }}"
     mode: 0644
-
-- name: Create git credentials config link for github
-  file:
-    src: /home/{{ lookup('env','USER') }}/.config/gitcreds/github.creds
-    path: /home/{{ lookup('env','USER') }}/.git-credentials
-    state: link
