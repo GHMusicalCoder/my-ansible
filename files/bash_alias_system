@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# bash system aliases / functions
+if hash nala 2>/dev/null; then
+    alias install='sudo nala install'
+    alias remove='sudo nala remove'
+    alias search='nala search'
+    alias update='sudo nala update; nala list --upgradable'
+    alias upgrade='sudo nala upgrade -y; sudo nala autoremove -y; sudo snap refresh; update_ytdl; git_pull_all; remove_old_snaps;'
+else
+    alias install='sudo apt install'
+    alias remove='sudo apt remove'
+    alias search='apt search'
+    alias update='sudo apt update; apt list --upgradable'
+    alias upgrade='sudo apt upgrade -y; sudo apt auto-remove -y; sudo snap refresh; update_ytdl; git_pull_all; remove_old_snaps;'
+fi
+
+alias fonts='sudo fc-cache -fv'
+alias link='ln -sf'
+alias makeimage='sudo ddrescue --force -D'
+alias upsource='source ~/.bashrc'

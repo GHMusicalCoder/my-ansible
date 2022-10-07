@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# bash folder aliases 
+
+alias anpull='cd ~/Development/ansible_pull'
+alias dev='cd ~/Development'
+alias docs='cd ~/Documents'
+alias dots='cd ~/Development/mydotfiles'
+alias down='cd ~/Downloads'
+alias myansi='cd ~/Development/my-ansible'
+alias notes='cd ~/Development/my-notes'
+alias pics='cd ~/Pictures'
+alias temp='cd ~/Temp'
+alias vids='cd ~/Videos'
+alias work='cd ~/Work'

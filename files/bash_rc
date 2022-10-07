@@ -104,8 +104,16 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.bash_aliases_home ]; then
+    . ~/.bash_aliases_home
+fi
+
+if [ -f ~/.bash_aliases_dirs ]; then
+    . ~/.bash_aliases_dirs
+fi
+
+if [ -f ~/.bash_aliases_sys ]; then
+    . ~/.bash_aliases_sys
 fi
 
 # work aliases
@@ -140,6 +148,7 @@ if [[ -f ~/.pyenv/.agignore && "$PATH" != *".pyenv"* ]]; then
     export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init --path)"
     eval "$(pyenv init -)"
+    alias pyavail='pyenv install --list'
 fi
 
 if [[ "$PATH" != *".local/bin"* ]]; then

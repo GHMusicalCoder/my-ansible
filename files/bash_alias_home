@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# bash folder aliases 
+
+if [ -d ~/Applications/SAApps/yt-dlp" ]; then
+    alias ytdl='~/Applications/SAApps/yt-dlp/yt-dlp -S "ext,res:720"'
+    alias getsong='~/Applications/SAApps/yt-dlp/yt-dlp -i -x -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0'
+fi
+
+if [ -d ~/Development/wordle-solver ]; then
+    alias wordle='cd ~/Development/wordle-solver; python3 wordle-solver.py;'
+fi
+
+if [ -d ~/Development/sudoku-solver ]; then
+    alias sudoku='cd ~/Development/sudoku-solver; python3 solver.py;'
+fi
+
+alias freenas='ssh root@192.168.88.224'
+alias showfreenas='showmount -e 192.168.88.224'
+
+# alias ventoy="cd ~/Applications/GitApps/ventoy;"
+# alias venup='sudo sh Ventoy2Disk.sh -u /dev/sda'
+
+alias playbook='cd ~/Development/my-ansible; ansible-playbook ./testing.yml -c local -u christopher -K --become-method=sudo;'
+
+
