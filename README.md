@@ -9,10 +9,12 @@ My ansible pull installation for my several computers and servers
     * ~~Install additional base system applications~~
     * Set up base system items from our included files:
       * before implementing these - I want to clean these up so they are more spaced out as I have some aliases and such that I wouldn't want at the office machine, etc
-        * bashrc
-        * bashoffice
+        * ~~bashrc~~
+        * ~~bashoffice~~
+        * ~~bashalias~~
         * bashfunction
-        * bashalias
+          * rewrite - update_doctor to use system variables instead of hardcoded user and computer and verify that NAS is available
+          * update the NAS Updaters to verify that the NAS dirs are available and the external hard drive is plugged in
     * Configure and install additional installation programs
       * deb-get + git repo + etc-functions
       * cmk-get
