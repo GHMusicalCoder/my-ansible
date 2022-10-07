@@ -53,10 +53,6 @@ AP="$(which ansible-playbook)"
 AG="$(which ansible-galaxy)"
 PIP="$(which pip)"
 
-messenger progress "Installing deb-get for additional 3rd party management"
-curl -sL https://raw.githubusercontent.com/wimpysworld/deb-get/main/deb-get | sudo -E bash -s install deb-get
-${SUDO} mkdir -p /etc/deb-get.d/01-pending-merge
-
 messenger progress "Moving ansible value key to its home location"
 if [ -f "${HOME}/${VAULT}" ]; then
     messenger info "Vault key already in proper home location"
