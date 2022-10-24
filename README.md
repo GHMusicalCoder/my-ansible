@@ -7,6 +7,8 @@ My ansible pull installation for my several computers and servers
     * ~~Ensure personal directories are configured properly based on machine~~
     * ~~Configure gitlab and github configuration swapping mechanisms~~
     * ~~Install additional base system applications~~
+
+## While the rest of these options are listed here - I have moved them to be actual issues in the github tracking.
     * Set up base system items from our included files:
       * before implementing these - I want to clean these up so they are more spaced out as I have some aliases and such that I wouldn't want at the office machine, etc
         * ~~bashrc~~
