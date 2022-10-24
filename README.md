@@ -26,7 +26,7 @@ My ansible pull installation for my several computers and servers
     * Configure Laptop apps
     * Copy files (desktop images and media)
     * Install additional 3rd party "system" applications
-2. Install various category applications (apt or deb-get or cmk-get)
+  * Install various category applications (apt or deb-get or cmk-get)
    * Accessories
    * Development
      * When installing VS Code Extensions - use redhat.ansible instead of the other ansible

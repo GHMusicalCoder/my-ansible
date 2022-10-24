@@ -7,6 +7,13 @@ function cheat() {
 
 function git_pull_all() {
     cd ~/Development;
+    if [ -d "my-ansible" ]; then
+        cd my-ansible;
+        echo "checking for my ansible updates"
+        git pull;
+        cd ..;
+    fi
+
     if [ -d "ansible_pull" ]; then
         cd ansible_pull;
         echo "checking for ansible pull updates"
