@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+function update_dev_repos() {
+    if [ -d $HOME/Development ]; then
+        local DIR
+        declare -a REPOS=("my-ansible" "ansible_pull" "music-karaoke-tracker" "lyric-web-app" "my-notes" "codingsites" "personal-wikis"\
+                        "sudoku-solver" "tablemanager" "wordplay" "wordle-solver" "rpg-cards" "pyenv" "ObsidianNotes")
+        for r in ${REPOS[@]}
+        do
+            case ${r} in
+                pyenv)
+                    DIR=$HOME/Applications/GitApps;;
+                ObsidianNotes)
+                    DIR=$HOME/Work;;
+                *)
+                    DIR=$HOME/Development;;
+            esac
+            if [ -d ${DIR}/${r} ]; then
+                cd ${DIR}/${r}
+                echo "Updating git repository in  ${DIR}/${r}"
+                git pull;
+                cd
+            fi
+        done
+    fi
+}
+
+function update_obsidian_notes() {
+    cd ~/Work/ObsidianNotes
+    git add .;
+    git commit -m "functional update of notes";
+    git push origin main;
+    cd;
+}
+
+function update_ytdl() {
+    cd ~/Applications/SAApps;
+    if [ -d "yt-dlp" ]; then
+        cd yt-dlp;
+        ./yt-dlp -U;
+    fi
+    cd;
+}
