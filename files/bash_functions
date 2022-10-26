@@ -1,21 +1,5 @@
 #!/usr/bin/env bash
 
-function backup_doctor() {
-    declare -a FOLDERS=("calibre" "Documents" "Downloads" "Music" "Pictures" "Temp" "Videos" "Work")
-    RSYNC_CMD="rsync -auv"
-    FROM="/home/christopher/"
-    TO="/mnt/crypt/Backups/the-doctor/"
-    for f in ${FOLDERS[@]}
-    do 
-        if [[ "${f}" == "calibre" ]]; then
-            echo "Backing Calibre Library up to the NAS"
-            ${RSYNC_CMD} ${FROM}Calibre\ Library/* ${TO}Calibre\ Library
-        else
-            echo "Backing ${f} up to the NAS"
-            ${RSYNC_CMD} ${FROM}${f}/* ${TO}${f}
-        fi
-    done
-}
 
 function update_crypt_backup() {
     #backups
@@ -62,3 +46,4 @@ function update_vault_backup() {
         echo "Your Media Storage Archive is missing - make sure its plugged in and turned on..."
     fi
 }
+

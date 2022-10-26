@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+function backup_computer() {
+    local COMPNAME=$(hostname)
+    local TO="/mnt/crypt/Backups/"
+    TO="/mnt/crypt/Backups/"
+    if [ -d ${TO} ]; then
+        declare -a FOLDERS=("calibre" "Documents" "Downloads" "Music" "Pictures" "Temp" "Videos" "Work")
+        local FROM
+        for f in ${FOLDERS[@]}
+        do 
+            if [[ "${f}" == "calibre" ]]; then
+                FROM = "${HOME}/Calibre Library"
+                if [ -d ${FROM} ]; then
+                    messenger info "Backing Calibre Library up to the NAS"
+                    shush archive ${FROM}/* ${TO}Calibre\ Library
+                else
+                    messenger error "Calibre Library not found! Skipping..."
+                fi
+            else
+                FROM = ${HOME}/${f}
+                if [ -d ${FROM} ]; then
+                    messenger info "Backing ${f} up to the NAS"
+                    shush archive ${FROM}${f}/* ${TO}${f}
+                else
+                    messenger error "${f} folder not found!  Skipping..."
+                fi
+            fi
+        done
+    fi
+}
+
+function archive_crypt() {
+    CRYPT="/mnt/crypt"
+    F_PRIME=($(ls -d ${CRYPT}/*/))      # F_PRIME should be Backups and Unsorted (/mnt/crypt/Backups & ../Unsorted)
+    ARC_DRIVE="/media/$USER/ARCHIVAL"
+    
+}
