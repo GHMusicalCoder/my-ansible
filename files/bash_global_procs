@@ -46,3 +46,8 @@ function remove_outdated_snaps() {
         sudo snap remove "$snapname" --revision="$revision"
     done
 }
+
+function shush() {
+    "$@" 1>/dev/null 2>&1;
+}
+
