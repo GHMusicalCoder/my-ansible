@@ -14,6 +14,7 @@ else
     alias upgrade='sudo apt upgrade -y; sudo apt auto-remove -y; sudo snap refresh; update_ytdl; git_pull_all; remove_old_snaps;'
 fi
 
+alias archive='rsync -auv'
 alias fonts='sudo fc-cache -fv'
 alias link='ln -sf'
 alias makeimage='sudo ddrescue --force -D'
