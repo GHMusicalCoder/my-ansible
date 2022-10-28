@@ -32,7 +32,38 @@ function backup_computer() {
 
 function archive_crypt() {
     CRYPT="/mnt/crypt"
-    F_PRIME=($(ls -d ${CRYPT}/*/))      # F_PRIME should be Backups and Unsorted (/mnt/crypt/Backups & ../Unsorted)
+    PRIME=($(ls -d ${CRYPT}/*/))      # PRIME should be Backups and Unsorted (/mnt/crypt/Backups & ../Unsorted)
     ARC_DRIVE="/media/$USER/ARCHIVAL"
-    
+    if [ -d "${ARC_DRIVE}" && -d "${CRYPT}" ]; then
+        for pdir in ${PRIME[@]}
+        do
+            if [[ "${pdir}" == "Backups"]]; then
+                declare -a FOLDERS=("db_backups" "satelite-5" "the-doctor" "the-tardis")
+            else
+                declare -a FOLDERS=("CKMusicDrive" "DaniMusicDrive" "NewStuff" "StorageOne" "StorageTwo" "StorageThree")
+            fi
+            for f in ${FOLDERS[@]}
+            do
+                messenger info "Archiving ${f} data to archive drive."
+                if [[ "${f}" == "CKMusicDrive" ]] || [[ "${f}" == "DaniMusicDrive" ]]; then
+                    shush archive ${CRYPT}/${pdir}/${f}/* ${ARC_DRIVE}/${pdir}/DJDrives
+                else
+                    shush archive ${CRYPT}/${pdir}/${f}/* ${ARC_DRIVE}/${pdir}/${f}
+                fi
+            done
+        done
+    else
+        messenger error "Either external archive drive does not seem to be mounted or Gallifrey can not be found.  Please fix and then try again."
+    fi
+}
+
+function archive_vault() {
+    VAULT="/mnt/vault"
+    ARC_DRIVE="/media/$USER/ARCHIVAL/vault"
+    if [ -d "${VAULT}" && -d "${ARC_DRIVE}" ]; then
+        messenger info "Archiving the vault folders to the archive drive."
+        shush archive ${VAULT}/* ${ARC_DRIVE}
+    else
+        messenger error "Either Gallifrey can not be found or the external archive drive is missing.  Please fix and then try again."
+    fi
 }
