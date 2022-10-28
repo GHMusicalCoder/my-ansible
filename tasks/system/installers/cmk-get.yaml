@@ -1,0 +1,5 @@
+---
+- name: Download my personal cmk-get repo
+  git:
+    repo: "https://github.com/GHMusicalCoder/cmk-get.git"
+    dest: "/home/{{ lookup('env','USER') }}/Development/cmk-get"

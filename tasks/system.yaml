@@ -10,9 +10,9 @@
 - name: Setting up github credentials
   include: tasks/system/gitlab_config.yaml
 
+# additional installers
+- name: Setting up additional installation programs (deb-get / git repos / cmk-get)
+  include: tasks/system/3rd_party_installers.yaml
 
-# deb-get
-# - name: install deb-get (personal forked) repo
-#   include: tasks/system/deb-get.yaml
 
 

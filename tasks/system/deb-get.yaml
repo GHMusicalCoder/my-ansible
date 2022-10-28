@@ -1,9 +1,0 @@
----
-- name: Download my personal deb-get repo
-  git:
-    repo: "https://github.com/GHMusicalCoder/deb-get.git"
-    dest: "/home/{{ lookup('env','USER') }}/Development/deb-get"
-
-- name: Install deb-get
-  shell: sudo -e "/home/{{ lookup('env','USER') }}/Development/deb-get/deb-get" install deb-get
-

@@ -1,0 +1,6 @@
+---
+- name: deb-get 3rd party installers
+  include: tasks/system/installers/deb-get.yaml
+
+- name: cmk-get personal app installer
+  include: tasks/system/installers/cmk-get.yaml
