@@ -11,4 +11,4 @@
     path: "{{ item }}"
     state: directory
   with_items: "{{ personal_dirs }}"
-  when: (personal_dirs is defined) and ((ansible_nodename == "the-tardis") or (ansible_nodename == "the-doctor"))
+  when: personal_dirs is defined

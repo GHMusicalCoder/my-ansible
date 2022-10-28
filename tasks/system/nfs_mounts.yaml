@@ -1,0 +1,81 @@
+---
+# create crypt and vault mount points 
+- name: Mount NFS CRYPT link
+  become: yes
+  mount:
+    src: 192.168.88.224:/mnt/IOUN/CRYPT
+    path: /mnt/crypt
+    state: mounted
+    fstype: nfs
+
+- name: Mount NFS VAULT link
+  become: yes
+  mount:
+    src: 192.168.88.224:/mnt/OGHMA/VAULT
+    path: /mnt/vault
+    state: mounted
+    fstype: nfs
+
+# create directories for short cut links 
+- nfs_dirs:
+  - "/home/{{ lookup('env','USER') }}/NASShares"
+  - "/home/{{ lookup('env','USER') }}/Documents/Books"
+  - "/home/{{ lookup('env','USER') }}/Documents/Gaming"
+  - "/home/{{ lookup('env','USER') }}/Documents/Magazines"
+  - "/home/{{ lookup('env','USER') }}/Documents/Recipes"
+
+- name: Create NAS short cut directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items: "{{ nfs_dirs }}"
+  when: nfs_dirs is defined
+
+# create shortcut links for NFS mounts
+- name: Create crypt symbolic link
+  file:
+    src: "/mnt/crypt/"
+    path: "/home/{{ lookup('env','USER') }}/NASShares/Crypt"
+    state: link
+
+- name: Create vault symbolic link
+  file:
+    src: "/mnt/vault/"
+    path: "/home/{{ lookup('env','USER') }}/NASShares/Vault"
+    state: link
+
+- name: Create NAS Video Links for CTT
+  file:
+    src:  /mnt/vault/Media/Videos/CTT/
+    path: /home/{{ lookup('env','USER') }}/Videos/CTT
+    state: link
+
+- name: Create NAS Video Links for Wimpys World
+  file:
+    src:  /mnt/vault/Media/Videos/WimpysWorld/
+    path: /home/{{ lookup('env','USER') }}/Videos/Wimpy
+    state: link
+
+- name: Create NAS eBooks links
+  file:
+    src: /mnt/vault/Archives/eBooks
+    path: /home/{{ lookup('env','USER') }}/Documents/Books/Vault
+    state: link
+
+- name: Create NAS gaming links
+  file:
+    src: /mnt/vault/Archives/Gaming
+    path: /home/{{ lookup('env','USER') }}/Documents/Gaming/Vault
+    state: link
+
+- name: Create NAS magazines links
+  file:
+    src: /mnt/vault/Archives/Magazines
+    path: /home/{{ lookup('env','USER') }}/Documents/Magazines/Vault
+    state: link
+    
+- name: Create NAS recipes links
+  file:
+    src: /mnt/vault/Archives/Recipes
+    path: /home/{{ lookup('env','USER') }}/Documents/Recipes/Vault
+    state: link
