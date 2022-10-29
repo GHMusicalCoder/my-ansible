@@ -1,0 +1,12 @@
+- name: Copying starting images (desktop backgrounds)
+  copy:
+    src: "{{ item }}"  
+    dest: "/home/{{ lookup('env','USER') }}/Pictures/Desktop Backgrounds/"
+  with_fileglob: "/mnt/vault/Media/Images/Desktop Backgrounds/*.*"
+
+- name: Copying starting images (masonic)
+  copy:
+    src: "{{ item }}"  
+    dest: "/home/{{ lookup('env','USER') }}/Pictures/Masonic/"
+  with_fileglob: "/mnt/vault/Media/Images/Masonic/*.*"
+
