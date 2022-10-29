@@ -3,7 +3,8 @@
 
 # system - level applications
 system_apps:
-  - build-essential 
+  - build-essential
+  - coreutils 
   - curl
   - dcfldd 
   - dconf-editor 
@@ -39,3 +40,13 @@ system_apps:
   - vim
   - wget
   - xz-utils
+
+virt_machine_apps:
+  - libvirt-clients
+  - libvirt-daemon-system
+  - qemu
+  - qemu-kvm
+  - qemu-system
+  - qemu-utils
+  - virtinst
+  - virt-manager
