@@ -50,3 +50,6 @@ virt_machine_apps:
   - qemu-utils
   - virtinst
   - virt-manager
+
+laptop_apps:
+  - laptop-mode-tools

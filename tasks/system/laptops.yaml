@@ -1,0 +1,7 @@
+---
+- name: install laptop applications
+  become: yes
+  ansible.builtin.apt:
+    pkg: "{{ laptop_apps }}"
+    state: present
+  when: laptop_apps is defined
