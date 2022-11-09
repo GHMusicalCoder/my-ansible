@@ -5,6 +5,7 @@
   vars_files:
     - "config/directories.yaml"
     - "config/applications.yaml"
+    - "config/other_vars.yaml"
   pre_tasks:
     - name: update repositories
       become: yes
@@ -12,7 +13,7 @@
       changed_when: false
   tasks:
     - include: tasks/system.yaml
-    - include: tasks/apps.yaml
+    # - include: tasks/apps.yaml
   post_tasks:
     - name: fix any broken installs
       become: yes
