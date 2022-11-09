@@ -20,4 +20,10 @@ personal_dirs:
   - "/home/{{ lookup('env','USER') }}/Pictures/Desktop Backgrounds"
   - "/home/{{ lookup('env','USER') }}/Pictures/Masonic"
 
+nfs_dirs:
+  - "/home/{{ lookup('env','USER') }}/NASShares"
+  - "/home/{{ lookup('env','USER') }}/Documents/Books"
+  - "/home/{{ lookup('env','USER') }}/Documents/Gaming"
+  - "/home/{{ lookup('env','USER') }}/Documents/Magazines"
+  - "/home/{{ lookup('env','USER') }}/Documents/Recipes"
 

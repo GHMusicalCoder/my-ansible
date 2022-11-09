@@ -8,19 +8,14 @@
   shell: curl -sL https://raw.githubusercontent.com/wimpysworld/deb-get/main/deb-get | sudo -E bash -s install deb-get
   become: yes
 
-- deb-get-dirs:
-  - "/etc/deb-get.d"
-  - "/etc/deb-get.d/additional_functions/"
-
-
 # install personal installers for deb-get
 - name: create additional deb-get install folders in /etc
   become: yes
   file:
     path: "{{ item }}"
     state: directory
-  with_items: "{{ deb-get-dirs }}"
-  when: deb-get-dirs is defined
+  with_items: "{{ deb_get_dirs }}"
+  when: deb_get_dirs is defined
 
 # copy personal deb-get installers
 - name: copy deb-get_submitted for deb-get usage

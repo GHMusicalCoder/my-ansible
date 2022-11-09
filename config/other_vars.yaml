@@ -1,0 +1,5 @@
+# other variables that will be used in the system
+
+deb_get_dirs:
+  - "/etc/deb-get.d"
+  - "/etc/deb-get.d/additional_functions/"

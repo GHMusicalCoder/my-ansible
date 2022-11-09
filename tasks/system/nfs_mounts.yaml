@@ -16,14 +16,6 @@
     state: mounted
     fstype: nfs
 
-# create directories for short cut links 
-- nfs_dirs:
-  - "/home/{{ lookup('env','USER') }}/NASShares"
-  - "/home/{{ lookup('env','USER') }}/Documents/Books"
-  - "/home/{{ lookup('env','USER') }}/Documents/Gaming"
-  - "/home/{{ lookup('env','USER') }}/Documents/Magazines"
-  - "/home/{{ lookup('env','USER') }}/Documents/Recipes"
-
 - name: Create NAS short cut directories
   file:
     path: "{{ item }}"
