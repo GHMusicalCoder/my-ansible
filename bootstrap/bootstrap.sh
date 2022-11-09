@@ -72,7 +72,7 @@ mkdir -p ${WORK_DIR}
 cd ${WORK_DIR}
 ${GIT} clone ${URL}
 cd ${REPO}
-${SUDO} cp ./files/deb-get_submitted /etc/deb-get.d/01-pending-merge/10-submitted
+# ${SUDO} cp ./files/deb-get_submitted /etc/deb-get.d/01-pending-merge/10-submitted
 
 messenger progress "Installing ansible dependencies"
 ${AG} install -r requirements.yaml --ignore-errors --force

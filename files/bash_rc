@@ -122,11 +122,18 @@ if [ -f ~/.bash_office ]; then
 fi
 
 # Personal functions definitions.
-# linking bash_pfuncs instead of bloating bash rc with personal functions
-
-if [ -f ~/.bash_pfuncs ]; then
-    . ~/.bash_pfuncs
+if [ -f ~/.bash_global_procs ]; then
+    . ~/.bash_global_procs
 fi
+
+if [ -f ~/.bash_archive_procs ]; then
+    . ~/.bash_archive_procs
+fi
+
+if [ -f ~/.bash_dev_procs ]; then
+    . ~/.bash_dev_procs
+fi
+
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

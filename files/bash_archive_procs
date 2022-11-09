@@ -37,7 +37,7 @@ function archive_crypt() {
     if [ -d "${ARC_DRIVE}" && -d "${CRYPT}" ]; then
         for pdir in ${PRIME[@]}
         do
-            if [[ "${pdir}" == "Backups"]]; then
+            if [ "${pdir}" == "Backups"]; then
                 declare -a FOLDERS=("db_backups" "satelite-5" "the-doctor" "the-tardis")
             else
                 declare -a FOLDERS=("CKMusicDrive" "DaniMusicDrive" "NewStuff" "StorageOne" "StorageTwo" "StorageThree")
