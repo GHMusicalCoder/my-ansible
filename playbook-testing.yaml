@@ -1,0 +1,9 @@
+---
+- name: Ansible Installation of software
+  hosts:  localhost
+  become: no
+  vars_files:
+    - "config/directories.yaml"
+    - "config/applications.yaml"
+  tasks:
+    - include: tasks/system/aliases.yaml
