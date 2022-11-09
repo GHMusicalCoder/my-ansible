@@ -20,6 +20,6 @@ alias link='ln -sf'
 alias makeimage='sudo ddrescue --force -D'
 alias upsource='source ~/.bashrc'
 
-if [ -d "~/Development/cmk-get" ]; then
+if [ -d ~/Development/cmk-get ]; then
     alias cmk-get='~/Development/cmk-get/cmk-get'
 fi
