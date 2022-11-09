@@ -1,0 +1,30 @@
+---
+# bootstrap.sh should have already downloaded the latest my-ansible repo and created the $HOME/Development/my-ansible directory
+- name: Removing old bashrc file
+  become: yes
+  file:
+    path: $HOME/.bashrc
+    state: absent
+
+- name: linking new bashrc
+  file:
+    src:  $HOME/Development/my-ansible/files/bash_rc
+    dest: $HOME/.bashrc
+    state: link
+
+- name: linking alias and function files
+  file:
+    src: "$HOME/Development/my-ansible/files/{{ item }}"
+    dest: "$HOME/.{{ item }}"
+    state: link
+  loop:
+    - bash_alias_directories
+    - bash_alias_home
+    - bash_alias_system
+    - bash_archive_procs
+    - bash_dev_procs
+    - bash_global_procs
+
+- name: Update source to use new bash rc
+  shell: source ~/.bashrc
+
