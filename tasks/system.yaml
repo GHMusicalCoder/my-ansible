@@ -21,7 +21,7 @@
 # nfs mounts and symbolik links
 - name: Setting up NFS directories and mounting the NFS drives and sym links 
   include: tasks/system/nfs_mounts.yaml
-  tags: nfs
+  tags: nas
 
 # virtual machine items (for running virtual machines)
 - name: Setting up various virtual machine applications
@@ -33,3 +33,7 @@
   include: tasks/system/laptops.yaml
   tags: mobile
 
+# copy files from the NAS
+- name: Copy files from the NAS device
+  include:  tasks/system/copy_files.yaml
+  tags: nas

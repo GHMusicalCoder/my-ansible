@@ -82,7 +82,7 @@ ${PIP} install github3.py
 ##########################################################################
 ## ANSIBLE TAGS AVAILABLE                                               ##
 ##########################################################################
-# nfs - add to install nfs tasks
+# nas - add to install things requiring the NAS machine
 # vms - add to install virtual machine stuff
 # mobile - add to install laptop stuff
 
