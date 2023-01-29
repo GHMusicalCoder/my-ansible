@@ -1,22 +1,30 @@
 ---
-# - name: Setting up system and personal directories
-#   include: tasks/system/directories.yaml
+- name: Setting up system and personal directories
+  include: tasks/system/directories.yaml
+  tags: all
 
 # system aliases / bashrc files
 - name: Setting up aliases and functions
   include: tasks/system/aliases.yaml
+  tags: all
 
 # github credentials
-# - name: Setting up github credentials
-#   include: tasks/system/github_config.yaml
+- name: Setting up github credentials
+  include: tasks/system/github_config.yaml
+  tags: all
 
-# # gitlab credentials
-# - name: Setting up github credentials
-#   include: tasks/system/gitlab_config.yaml
+# gitlab credentials
+- name: Setting up github credentials
+  include: tasks/system/gitlab_config.yaml
+  tags: all
 
-# # additional installers
-# - name: Setting up additional installation programs (deb-get / git repos / cmk-get)
-#   include: tasks/system/3rd_party_installers.yaml
+# additional installers
+- name: Setting up additional installation programs (deb-get / git repos / cmk-get)
+  include: tasks/system/3rd_party_installers.yaml
+  tags: all
 
-
+# nfs mounts and symbolik links
+- name: Setting up NFS directories and mounting the NFS drives and sym links 
+  include: tasks/system/nfs_mounts.yaml
+  tags: nfs
 
