@@ -28,3 +28,9 @@
   include: tasks/system/nfs_mounts.yaml
   tags: nfs
 
+# virtual machine items (for running virtual machines)
+- name: Setting up various virtual machine applications
+  include: tasks/system/virtual_machines.yaml
+  tags: vms
+
+
