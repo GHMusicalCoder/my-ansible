@@ -1,0 +1,11 @@
+---
+# installing system apps via deb-get
+- name: Installing appimage-launcher * rpi-imager * lsd * fd * du-dust * bitwarden - via deb-get
+  become: yes
+  shell: deb-get install appimagelauncher rpi-imager lsd fd du-dust bitwarden
+
+# installing system apps via cmk-get
+- name: Installing shellcheck * bw * btop - via cmk-get
+  become: yes
+  shell: cmk-get install shellcheck bw btop
+  

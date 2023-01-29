@@ -37,3 +37,8 @@
 - name: Copy files from the NAS device
   include:  tasks/system/copy_files.yaml
   tags: nas
+
+# install 3rd party system apps
+- name: Installing 3rd party System Apps
+  include: tasks/system/3rd_party_system_apps.yaml
+
