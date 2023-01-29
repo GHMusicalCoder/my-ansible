@@ -40,7 +40,7 @@ function messenger() {
     esac
 }
 
-function remove_outdated_snaps() {
+function cleanup_snaps() {
     snap list --all | mawk '/disabled/{print $1, $3}' |
     while read snapname revision; do
         sudo snap remove "$snapname" --revision="$revision"
