@@ -2,7 +2,7 @@
 LC_ALL=C
 
 ##########################################################################
-## BASE CONFIGURATIONS
+## BASE CONFIGURATIONS                                                  ##
 ##########################################################################
 function messenger() {
     if [ -z "${1}" ] || [ -z "${2}" ]; then
@@ -77,6 +77,14 @@ cd ${REPO}
 messenger progress "Installing ansible dependencies"
 ${AG} install -r requirements.yaml --ignore-errors --force
 ${PIP} install github3.py
+
+
+##########################################################################
+## ANSIBLE TAGS AVAILABLE                                               ##
+##########################################################################
+# nfs - add to install nfs tasks
+# vms - add to install virtual machine stuff
+# mobile - add to install laptop stuff
 
 messenger progress "Running ansible playbook"
 ${AP} --vault-password-file "${HOME}/${VAULT}" ./${PLAYBOOK} -c local -K
