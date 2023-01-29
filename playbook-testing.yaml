@@ -7,4 +7,4 @@
     - "config/applications.yaml"
     - "config/other_vars.yaml"
   tasks:
-    - include: tasks/system/3rd_party_installers.yaml
+    - include: tasks/system/virtual_machines.yaml

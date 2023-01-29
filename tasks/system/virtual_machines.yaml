@@ -13,6 +13,11 @@
     groups: libvirt
     append: yes
 
-- name: install quickemu via deb-get
-  shell: sudo deb-get install quickemu quickgui
+- name: install quickemu & quickgui via deb-get
+  become: yes
+  shell: deb-get install quickemu quickgui
+#  register: dgoutput
+  
+#- debug: var=dgoutput.stdout_lines
+
 
