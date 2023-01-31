@@ -18,6 +18,7 @@ My ansible pull installation for my several computers and servers
      * dbeaver-ce
      * ubuntu-make
      * waydroid
+     * pycharm (cmk-get)
    * Games
      * com.github.tkashkin.gamehub
      * heroic
@@ -39,6 +40,8 @@ My ansible pull installation for my several computers and servers
      * ytdl (cmk-get)
    * Office
      * obsidian
+     * softmaker office
+     * master pdf editor
    * Classic Optical
 
 The ultimate goal is to add to this as I install new software (and possibly remove unused software)
