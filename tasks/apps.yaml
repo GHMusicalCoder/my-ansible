@@ -3,3 +3,6 @@
 - name: Installing accessory applications
   tasks: tasks/apps/accessories.yaml
 
+# install dev apps
+- name: Installing development applications
+  tasks: tasks/apps/development.yaml

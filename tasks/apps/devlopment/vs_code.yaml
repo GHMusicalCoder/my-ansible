@@ -1,0 +1,18 @@
+---
+# installing vs code via deb-get
+- name: Installing Visual Studio Code - via deb-get
+  become: yes
+  shell: deb-get install code
+
+# install vs code extensions
+- name: install vscode ansible extension
+  shell: |
+    code --install-extension redhat.ansible
+    code --install-extension rogalmic.bash-debug
+    code --install-extension mads-hartmann.bash-ide-vscode
+    code --install-extension yzhang.markdown-all-in-one
+    code --install-extension shd101wyy.markdown-preview-enhanced
+    code --install-extension vangware.dark-plus-material
+    code --install-extension ms-python.python
+    code --install-extension ms-python.vscode-pylance
+    code --install-extension alexcvzz.vscode-sqlite

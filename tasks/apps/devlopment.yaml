@@ -1,0 +1,19 @@
+---
+# python development apps
+- name: Installing python app packages
+  become: yes
+  apt:
+    pkg:  "{{ python_apps }}"
+    state: present
+  when: python_apps is defined
+
+# vs code - this is via deb-get and we'll have extensions to add, so making its own file for this
+- name: Installing Visual Studio Code via deb-get
+  tasks: tasks/apps/development/vs_code.yaml
+
+# pycharm
+
+# github / lab clones
+
+# 3rd party apps
+
