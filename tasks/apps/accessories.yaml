@@ -1,0 +1,14 @@
+---
+# accessories via apt
+- name: Installing apt accessory apps
+  become: yes
+  apt:
+    pkg:  "{{ accessory_apps }}"
+    state: present
+  when: accessory_apps is defined
+
+# ventoy via cmk-get
+- name: Installing ventoy - via cmk-get
+  become: yes
+  shell: cmk-get install ventoy
+

@@ -1,1 +1,5 @@
 ---
+# install accessories
+- name: Installing accessory applications
+  tasks: tasks/apps/accessories.yaml
+
