@@ -1,27 +1,26 @@
 #!/usr/bin/env bash
 
 function backup_computer() {
-    local COMPNAME=$(hostname)
     local TO="/mnt/crypt/Backups/"
     TO="/mnt/crypt/Backups/"
     if [ -d ${TO} ]; then
         declare -a FOLDERS=("calibre" "Documents" "Downloads" "Music" "Pictures" "Temp" "Videos" "Work")
         local FROM
-        for f in ${FOLDERS[@]}
+        for f in "${FOLDERS[@]}"
         do 
             if [[ "${f}" == "calibre" ]]; then
-                FROM = "${HOME}/Calibre Library"
-                if [ -d ${FROM} ]; then
+                FROM="${HOME}/Calibre Library"
+                if [ -d "${FROM}" ]; then
                     messenger info "Backing Calibre Library up to the NAS"
-                    shush archive ${FROM}/* ${TO}Calibre\ Library
+                    shush archive "${FROM}/*" "${TO}Calibre\ Library"
                 else
                     messenger error "Calibre Library not found! Skipping..."
                 fi
             else
-                FROM = ${HOME}/${f}
-                if [ -d ${FROM} ]; then
+                FROM="${HOME}/${f}"
+                if [ -d "${FROM}" ]; then
                     messenger info "Backing ${f} up to the NAS"
-                    shush archive ${FROM}${f}/* ${TO}${f}
+                    shush archive "${FROM}${f}/*" "${TO}${f}"
                 else
                     messenger error "${f} folder not found!  Skipping..."
                 fi
@@ -32,23 +31,23 @@ function backup_computer() {
 
 function archive_crypt() {
     CRYPT="/mnt/crypt"
-    PRIME=($(ls -d ${CRYPT}/*/))      # PRIME should be Backups and Unsorted (/mnt/crypt/Backups & ../Unsorted)
+    PRIME=($(ls -d "${CRYPT}/*/"))      # PRIME should be Backups and Unsorted (/mnt/crypt/Backups & ../Unsorted)
     ARC_DRIVE="/media/$USER/ARCHIVAL"
-    if [ -d "${ARC_DRIVE}" && -d "${CRYPT}" ]; then
-        for pdir in ${PRIME[@]}
+    if [ -d "${ARC_DRIVE}" ] && [ -d "${CRYPT}" ]; then
+        for pdir in "${PRIME[@]}"
         do
-            if [ "${pdir}" == "Backups"]; then
+            if [ "${pdir}" == "Backups" ]; then
                 declare -a FOLDERS=("db_backups" "satelite-5" "the-doctor" "the-tardis")
             else
                 declare -a FOLDERS=("CKMusicDrive" "DaniMusicDrive" "NewStuff" "StorageOne" "StorageTwo" "StorageThree")
             fi
-            for f in ${FOLDERS[@]}
+            for f in "${FOLDERS[@]}"
             do
                 messenger info "Archiving ${f} data to archive drive."
                 if [[ "${f}" == "CKMusicDrive" ]] || [[ "${f}" == "DaniMusicDrive" ]]; then
-                    shush archive ${CRYPT}/${pdir}/${f}/* ${ARC_DRIVE}/${pdir}/DJDrives
+                    shush archive "${CRYPT}/${pdir}/${f}/*" "${ARC_DRIVE}/${pdir}/DJDrives"
                 else
-                    shush archive ${CRYPT}/${pdir}/${f}/* ${ARC_DRIVE}/${pdir}/${f}
+                    shush archive "${CRYPT}/${pdir}/${f}/*" "${ARC_DRIVE}/${pdir}/${f}"
                 fi
             done
         done
@@ -60,9 +59,9 @@ function archive_crypt() {
 function archive_vault() {
     VAULT="/mnt/vault"
     ARC_DRIVE="/media/$USER/ARCHIVAL/vault"
-    if [ -d "${VAULT}" && -d "${ARC_DRIVE}" ]; then
+    if [ -d "${VAULT}" ] && [ -d "${ARC_DRIVE}" ]; then
         messenger info "Archiving the vault folders to the archive drive."
-        shush archive ${VAULT}/* ${ARC_DRIVE}
+        shush archive ${VAULT}/* "${ARC_DRIVE}"
     else
         messenger error "Either Gallifrey can not be found or the external archive drive is missing.  Please fix and then try again."
     fi

@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 function update_dev_repos() {
-    if [ -d $HOME/Development ]; then
+    if [ -d "$HOME/Development" ]; then
         local DIR
         declare -a REPOS=("my-ansible" "ansible_pull" "music-karaoke-tracker" "lyric-web-app" "my-notes" "codingsites" "personal-wikis"\
                         "sudoku-solver" "tablemanager" "wordplay" "wordle-solver" "rpg-cards" "pyenv" "ObsidianNotes")
-        for r in ${REPOS[@]}
+        for r in "${REPOS[@]}"
         do
             case ${r} in
                 pyenv)
@@ -15,29 +15,29 @@ function update_dev_repos() {
                 *)
                     DIR=$HOME/Development;;
             esac
-            if [ -d ${DIR}/${r} ]; then
-                cd ${DIR}/${r}
+            if [ -d "${DIR}/${r}" ]; then
+                cd "${DIR}/${r}" || exit;
                 echo "Updating git repository in  ${DIR}/${r}"
                 git pull;
-                cd
+                cd || exit;
             fi
         done
     fi
 }
 
 function update_obsidian_notes() {
-    cd ~/Work/ObsidianNotes
+    cd ~/Work/ObsidianNotes || exit
     git add .;
     git commit -m "functional update of notes";
     git push origin main;
-    cd;
+    cd || exit;
 }
 
 function update_ytdl() {
-    cd ~/Applications/SAApps;
+    cd ~/Applications/SAApps || exit;
     if [ -d "yt-dlp" ]; then
-        cd yt-dlp;
+        cd yt-dlp || exit;
         ./yt-dlp -U;
     fi
-    cd;
+    cd || exit;
 }
