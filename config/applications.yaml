@@ -53,3 +53,19 @@ virt_machine_apps:
 
 laptop_apps:
   - laptop-mode-tools
+
+python_apps:
+  - python3-ebooklib
+  - python3-enchant
+  - python3-gst-1.0
+  - python3-gtkspellcheck
+  - python3-selenium
+  - python3-sqlalchemy
+  - python3-sqlalchemy-ext
+  - python3-toml
+  - python3-pip
+  - python3-venv
+  - sqlite3
+  - libsqlite3-dev
+
+
