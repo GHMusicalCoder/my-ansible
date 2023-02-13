@@ -5,13 +5,13 @@ if hash nala 2>/dev/null; then
     alias remove='sudo nala remove'
     alias search='nala search'
     alias update='sudo nala update; nala list --upgradable'
-    alias upgrade='sudo nala upgrade -y; sudo nala autoremove -y; sudo snap refresh; update_ytdl; git_pull_all; cleanup_snaps;'
+    alias upgrade='sudo nala upgrade -y; sudo nala autoremove -y; sudo snap refresh; update_ytdl; update_dev_repos; cleanup_snaps;'
 else
     alias install='sudo apt install'
     alias remove='sudo apt remove'
     alias search='apt search'
     alias update='sudo apt update; apt list --upgradable'
-    alias upgrade='sudo apt upgrade -y; sudo apt auto-remove -y; sudo snap refresh; update_ytdl; git_pull_all; cleanup_snaps;'
+    alias upgrade='sudo apt upgrade -y; sudo apt auto-remove -y; sudo snap refresh; update_ytdl; update_dev_repos; cleanup_snaps;'
 fi
 
 alias archive='rsync -auv'
