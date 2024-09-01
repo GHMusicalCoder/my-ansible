@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 function backup_computer() {
-    local TO="/mnt/crypt/Backups/"
-    TO="/mnt/crypt/Backups/"
+    local TO="/mnt/crypt/Backups/the-doctor/"
+    TO="/mnt/crypt/Backups/the-doctor/"
     if [ -d ${TO} ]; then
         declare -a FOLDERS=("calibre" "Documents" "Downloads" "Music" "Pictures" "Temp" "Videos" "Work")
         local FROM
@@ -20,7 +20,8 @@ function backup_computer() {
                 FROM="${HOME}/${f}"
                 if [ -d "${FROM}" ]; then
                     messenger info "Backing ${f} up to the NAS"
-                    shush archive "${FROM}${f}/*" "${TO}${f}"
+                    messenger info "rsync -auv ${FROM}/* ${TO}${f}"
+                    rsync -auv ${FROM}/* ${TO}${f}
                 else
                     messenger error "${f} folder not found!  Skipping..."
                 fi
